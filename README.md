@@ -9,7 +9,10 @@ pip install -r requirements.txt
 
 ## 2. Download models
 
-URL: https://huggingface.co/nelfproject/NeLF_S2T_Pytorch
+URL: 
+https://huggingface.co/nelfproject/NeLF_S2T_Pytorch
+or
+https://huggingface.co/Jakobkee/NeLF_S2T_Pytorch
 
 ## 3. Set parameters:
 
