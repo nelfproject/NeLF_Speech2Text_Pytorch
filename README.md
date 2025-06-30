@@ -1,15 +1,21 @@
 ## Usage
 # 1. Recreate Python environment 
-Python version: 3.12.3
-Packages: see environment.yml (conda + pip)
-
-command: conda env create -f environment.yml
+Python version: 3.12
+pip install -r requirements.txt
 
 # 2. Download models
 
 URL: https://huggingface.co/nelfproject/NeLF_S2T_Pytorch
 
-## Usage:
+# 3. Set parameters:
 
-Set your parameters and local setup options in test_decode_with_vad.py and simply run the code in python.
+Set your parameters and local setup options in test_decode_with_vad.py.
+
+Main options:
+ -  local paths: downloaded model directory, output folder, audio data
+ -  desired outputs: only encoder outputs, verbatim decoder outputs, subtitle decoder outputs
+ -  device settings
+
+
+# 4. Run!
 

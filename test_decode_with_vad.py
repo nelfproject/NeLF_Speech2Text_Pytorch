@@ -9,18 +9,18 @@ import warnings
 
 #### SETTINGS ####
 # Device to use: cuda / cpu
-device = "cpu"
+device = "cuda"
 
 # Number of CPU cores to use
 num_cpus = 8
 
 # Directory where you installed the model
-model_dir = "/esat/audioslave/jponcele/models/ASR_subtitles_pytorch"
+model_dir = "/esat/audioslave/jponcele/models/NeLF_S2T_Pytorch"
 
 # Select desired model outputs
-encoder_outputs = True
-verbatim_decoder_outputs = False
-subtitle_decoder_outputs = False
+encoder_outputs = True               # encoder outputs
+verbatim_decoder_outputs = True      # verbatim decoder outputs
+subtitle_decoder_outputs = True      # subtitle decoder outputs
 
 # Options for decoder beam search
 decode_conf = {
@@ -33,24 +33,24 @@ decode_conf = {
 batch_decode = False  #True
 
 # Settings related to the VAD model
-VAD_model_dir = "/esat/audioslave/jponcele/models/ASR_subtitles_pytorch/VAD"
+VAD_model_dir = "/esat/audioslave/jponcele/models/NeLF_S2T_Pytorch/VAD"
 VAD_use_onnx = False  # if True, use ONNX model, else use torch.jit model
 
 max_segment_length = 15.0  # maximum length of one speech segment
 min_segment_length = 3.0  # minimum length of a speech segment
 max_pause = 2.0  # if pause between segments is smaller than this, try to merge segments
 
-min_speech_duration_ms = 250  # minimum amount of speech in ms to trigger VAD
-min_silence_duration_ms = 250  # minimum amount of silence in ms to trigger VAD
-speech_pad_ms = 60  # pad speech segments on each side to definitely not cut off speech
-vad_threshold = 0.5  # speech vs silence classification
+min_speech_duration_ms = 250  # (recommended) minimum amount of speech in ms to trigger VAD
+min_silence_duration_ms = 250  # (recommended) minimum amount of silence in ms to trigger VAD
+speech_pad_ms = 60  # (recommended) pad speech segments on each side to not cut off speech
+vad_threshold = 0.5  # (recommended) speech vs silence classification
 
 # Directory with audio examples
 wav_dir = "./audio_examples/long_wavs"
 
 # Output related
 output_add_timing = True  # add timing of segments to output
-verbose_output = False  # print output to terminal
+verbose_output = True  # print output to terminal
 write_output = False # print output to file
 output_dir = "./output/long_wavs"
 ###################
