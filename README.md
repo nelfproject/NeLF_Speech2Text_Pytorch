@@ -1,6 +1,6 @@
 # About
-Compact and pure python/pytorch implementation of the NeLF ASR model.
-Do not distribute.
+Compact and pure python/pytorch re-implementation of the NeLF ASR model.
+Private repo: do not distribute the code and or models.
 
 # Usage
 ## 1. Recreate Python environment 
@@ -22,6 +22,7 @@ Main options:
 
 
 ## 4. Run!
+python test_decode_with_vad.py
 
 # Contact
 jakob(dot)poncelet(at)esat(dot)kuleuven(dot)be
