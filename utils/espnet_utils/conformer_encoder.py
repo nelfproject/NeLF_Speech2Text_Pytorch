@@ -296,7 +296,7 @@ class ConformerEncoder(torch.nn.Module):
             torch.Tensor: Not to be used now.
 
         """
-        masks = (~make_pad_mask(ilens)[:, None, :]).to(xs_pad.device)
+        masks = (~make_pad_mask(ilens, xs_pad)[:, None, :, 0]).to(xs_pad.device)
 
         if (
             isinstance(self.embed, Conv2dSubsampling)
