@@ -27,7 +27,7 @@ decode_conf = {
     "nbest": 1,  # return the top N final predictions
     "beam_size": 20,  # amount of alternatives to keep during beam search
     "minlenratio": 0.2,  # minimum ratio of speech frames vs predicted text frames
-    "subtitle_length_penalty": 0.5,
+    "subtitle_length_penalty": 0.1,
     "normalize_length_subtitle": True,
 }
 
