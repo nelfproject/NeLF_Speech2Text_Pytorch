@@ -27,6 +27,8 @@ decode_conf = {
     "nbest": 1,  # return the top N final predictions
     "beam_size": 20,  # amount of alternatives to keep during beam search
     "minlenratio": 0.2,  # minimum ratio of speech frames vs predicted text frames
+    "subtitle_length_penalty": 0.5,
+    "normalize_length_subtitle": True,
 }
 
 # Decode all segments at the same time (only works for encoder-only)
@@ -40,10 +42,10 @@ max_segment_length = 15.0  # maximum length of one speech segment
 min_segment_length = 3.0  # minimum length of a speech segment
 max_pause = 2.0  # if pause between segments is smaller than this, try to merge segments
 
-min_speech_duration_ms = 250  # (recommended) minimum amount of speech in ms to trigger VAD
-min_silence_duration_ms = 250  # (recommended) minimum amount of silence in ms to trigger VAD
-speech_pad_ms = 60  # (recommended) pad speech segments on each side to not cut off speech
-vad_threshold = 0.5  # (recommended) speech vs silence classification
+min_speech_duration_ms = 250  # (recommended: 250) minimum amount of speech in ms to trigger VAD
+min_silence_duration_ms = 50  # (recommended: 250) minimum amount of silence in ms to trigger VAD
+speech_pad_ms = 60  # (recommended: 60) pad speech segments on each side to not cut off speech
+vad_threshold = 0.5  # (recommended: 0.5) speech vs silence classification
 
 # Directory with audio examples
 wav_dir = "./audio_examples/long_wavs"

@@ -205,8 +205,12 @@ class LengthBonus(BatchScorerInterface):
                 and next state list for ys.
 
         """
+        if isinstance(xs, tuple):
+            x0 = xs[0]
+        else:
+            x0 = xs
         return (
-            torch.tensor([1.0], device=xs.device, dtype=xs.dtype).expand(
+            torch.tensor([1.0], device=x0.device, dtype=x0.dtype).expand(
                 ys.shape[0], self.n
             ),
             None,

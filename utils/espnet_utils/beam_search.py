@@ -152,6 +152,8 @@ class BeamSearch(torch.nn.Module):
 
         self.hyp_primer = hyp_primer
 
+        self.normalize_length = normalize_length
+
     def set_hyp_primer(self, hyp_primer: List[int] = None) -> None:
         """Set the primer sequence for decoding.
 
@@ -453,7 +455,17 @@ class BeamSearch(torch.nn.Module):
             else:
                 logging.debug(f"remained hypotheses: {len(running_hyps)}")
 
-        nbest_hyps = sorted(ended_hyps, key=lambda x: x.score, reverse=True)
+        if self.normalize_length:
+            # Note (Jinchuan): -1 since hyp starts with <sos> and
+            # initially has score of 0.0
+            nbest_hyps = sorted(
+                ended_hyps,
+                key=lambda x: (x.score / (len(x.yseq) - 1)),
+                reverse=True
+            )
+        else:
+            nbest_hyps = sorted(ended_hyps, key=lambda x: x.score, reverse=True)
+
         # check the number of hypotheses reaching to eos
         if len(nbest_hyps) == 0:
             logging.warning(

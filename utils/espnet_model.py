@@ -389,7 +389,7 @@ class NeLFModel(nn.Module):
             results.append(text)
         return results    
     
-    def prepare_for_beam_search(self, nbest=1, beam_size=20, ctc_weight=0.3, subtitle_ctc_weight=0.0, length_penalty=0.0, subtitle_length_penalty=0.0, minlenratio=0.0, maxlenratio=0.0):
+    def prepare_for_beam_search(self, nbest=1, beam_size=20, ctc_weight=0.3, subtitle_ctc_weight=0.0, length_penalty=0.0, subtitle_length_penalty=0.0, minlenratio=0.0, maxlenratio=0.0, normalize_length_verbatim=False, normalize_length_subtitle=False):
         """ Prepare all modules for beam search """
         set_all_random_seed(42)
 
@@ -432,6 +432,7 @@ class NeLFModel(nn.Module):
                 vocab_size=len(token_list),
                 token_list=token_list,
                 pre_beam_score_key=None if ctc_weight == 1.0 else "full",
+                normalize_length=normalize_length_verbatim,
             )
             verbatim_beam_search.__class__ = BatchBeamSearch
 
@@ -458,6 +459,7 @@ class NeLFModel(nn.Module):
                 vocab_size=len(token_list),
                 token_list=token_list,
                 pre_beam_score_key=None if subtitle_ctc_weight == 1.0 else "full",
+                normalize_length=normalize_length_subtitle,
             )
             subtitle_beam_search.__class__ = BatchBeamSearch
             
