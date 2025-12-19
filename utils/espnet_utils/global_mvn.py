@@ -33,7 +33,7 @@ class GlobalMVN(torch.nn.Module):
         stats_file = Path(stats_file)
 
         self.stats_file = stats_file
-        stats = np.load(stats_file)
+        stats = np.load(stats_file, allow_pickle=True)
         if isinstance(stats, np.ndarray):
             # Kaldi like stats
             count = stats[0].flatten()[-1]
